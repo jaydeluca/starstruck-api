@@ -1,4 +1,3 @@
-
 // Stats
 const ships = {
   wraith: {
@@ -18,6 +17,11 @@ const ships = {
     armor: 7
   }
 }
+
+const battleOrder = [
+  'wraith',
+  'frigate'
+]
 
 // Stats for defensive structures
 const defenses = {
@@ -49,29 +53,30 @@ const defender = {
 
 function battle (attacking, defending) {
 
-  // Defense goes first, loop through ships and do their thing
-  Object.keys(defending).forEach(function(ship,index) {
-    // Get ship stats
-    let targets = ships[ship].damage;
+  // Loop through ships in battleOrder
+  for (ship of battleOrder){
+    fight(ship, defending, attacking);
+    fight(ship, attacking, defending);
+  }
+}
 
-    // Fire on targets
-    Object.keys(targets).forEach(function(k,i) {
-      if (defending[ship] > 0) {
-        let attacker_ships = attacking[k];
-        // calculate damage
-        let def_damage = defending[ship] * ships[ship].damage[k];
-        // ships killed
-        let kills = Math.round(def_damage/ships[ship].armor);
-        attacking[k] = attacking[k]-kills>0 ? attacking[k]-kills : 0;
+function fight(ship, defending, attacking) {
+  // Get ship stats
+  let targets = ships[ship].damage;
 
-        console.log('D: '+ship+ ' A: '+k);
-        console.log('kills: '+ kills);
-      }
+  // Fire on targets
+  Object.keys(targets).forEach(function(k,i) {
+    if (defending[ship] > 0) {
+      // calculate damage
+      let defenseDamage = defending[ship] * ships[ship].damage[k];
+      // ships killed
+      let kills = Math.round(defenseDamage/ships[ship].armor);
+      attacking[k] = attacking[k]-kills>0 ? attacking[k]-kills : 0;
 
-    });
-
+      console.log(`D: ${ship} A: ${k}`);
+      console.log(`kills: ${kills}`);
+    }
   });
-
 }
 
 console.log('Starting Attacker:');
@@ -84,7 +89,7 @@ console.log(defender);
 let rounds = 3;
 
 // Battle!
-for(let x = 0; x < rounds; x++) {
+for(let x = 1; x <= rounds; x++) {
   console.log(`Round ${x}:`);
   battle(attacker.fleet1, defender.fleet1);
   console.log(`Round ${x} Attacker:`);
