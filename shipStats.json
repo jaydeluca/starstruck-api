@@ -1,0 +1,29 @@
+{
+  "wraith": {
+    "type": "Ship",
+    "damage": {
+      "wraith": 0.2,
+      "frigate": 0.1,
+      "turret": 0.1
+    },
+    "armor": 3
+  },
+  "frigate": {
+    "type": "Ship",
+    "damage": {
+      "wraith": 0.7,
+      "frigate": 0.3,
+      "turret": 0.3
+    },
+    "armor": 7
+  },
+  "turret": {
+    "type": "Defense",
+    "speed": 1,
+    "damage": {
+      "wraith": 0.5,
+      "frigate": 0.2
+    },
+    "armor": 3
+  }
+}

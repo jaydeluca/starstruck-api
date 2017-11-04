@@ -1,35 +1,5 @@
 // Stats
-const units = {
-  wraith: {
-    type: 'Ship',
-    speed: 0,
-    damage: {
-      wraith: 0.2,
-      frigate: 0.1,
-      turret: 0.1
-    },
-    armor: 3,
-  },
-  frigate: {
-    type: 'Ship',
-    speed: 2,
-    damage: {
-      wraith: 0.7,
-      frigate: 0.3,
-      turret: 0.3
-    },
-    armor: 7
-  },
-  turret: {
-    type: 'Defense',
-    speed: 1,
-    damage: {
-      wraith: 0.5,
-      frigate: 0.2
-    },
-    armor: 3
-  }
-}
+const units = require('./shipStats');
 
 // Order of which units fight
 const battleOrder = [
@@ -74,7 +44,7 @@ function fight(ship, defending, attacking) {
       let defenseDamage = defending[ship] * units[ship].damage[k];
       // units killed
       let kills = Math.round(defenseDamage/units[ship].armor);
-      attacking[k] = attacking[k]-kills>0 ? attacking[k]-kills : 0;
+      if (attacking[k]) attacking[k] = attacking[k]-kills>0 ? attacking[k]-kills : 0;
 
       console.log(`D: ${ship} A: ${k}`);
       console.log(`kills: ${kills}`);
