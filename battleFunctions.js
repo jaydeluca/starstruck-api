@@ -1,5 +1,5 @@
 // Stats
-const units = require('./shipStats');
+const units = require("./shipStats");
 
 const fight = (ship, defending, attacking) => {
   // Get ship stats
@@ -19,9 +19,9 @@ const fight = (ship, defending, attacking) => {
 
 // Order of which units fight
 const battleOrder = [
-  'turret',
-  'wraith',
-  'frigate'
+  "turret",
+  "wraith",
+  "frigate"
 ]
 
 exports.battle = (attacking, defending) => {
@@ -37,19 +37,17 @@ exports.plunder = (attacker, defender) => {
 
   // potential spoils
   let potentional = defender.assets.asteroids;
-
   let astrodrones = attacker.units.astrodrone*0.15;
   let total = potentional.platinum + potentional.crystal + potentional.uninitiated;
 
-  let types = [
-    'platinum',
-    'crystal',
-    'uninitiated'
+  let asteroidTypes = [
+    "platinum",
+    "crystal",
+    "uninitiated"
   ];
 
-  // steal some astrodrones
-  for (type of types) {
-
+  // steal some asteroids
+  for (type of asteroidTypes) {
     let stolen = Math.round((defender.assets.asteroids[type]/total)*astrodrones);
     if (stolen > defender.assets.asteroids[type]) {
       stolen = defender.assets.asteroids[type];
@@ -58,5 +56,11 @@ exports.plunder = (attacker, defender) => {
     attacker.units.astrodrone -= stolen;
     defender.assets.asteroids[type] -= stolen;
   }
+
+  // steal some resources
+  let resourceTypes = [
+    "platinum",
+    "crystal"
+  ]
 
 }
