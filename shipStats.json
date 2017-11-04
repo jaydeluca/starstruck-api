@@ -4,6 +4,7 @@
     "damage": {
       "wraith": 0.2,
       "frigate": 0.1,
+      "astrodrone": 0.2,
       "turret": 0.1
     },
     "armor": 3
@@ -13,9 +14,14 @@
     "damage": {
       "wraith": 0.7,
       "frigate": 0.3,
+      "astrodrone": 0.4,
       "turret": 0.3
     },
     "armor": 7
+  },
+  "astrodrone": {
+    "type": "Ship",
+    "armor": 6
   },
   "turret": {
     "type": "Defense",
