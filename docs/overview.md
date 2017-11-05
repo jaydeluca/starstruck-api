@@ -3,6 +3,11 @@
 **Wraith**
 - Small ship
 
+**Astrodrone**
+- Steals Asteroids
+
+
+--
 
 ## Battle
 
@@ -12,3 +17,16 @@
 - Plunder goes to attacker
 - Salvage goes to defender
   - randomized 1% - 10% cost of each lost unit
+
+
+  --
+
+## Economy
+**Resources:**
+- Platinum
+- Crystal
+
+**Asteroids:**
+- Platinum
+- Crystal
+- Uninitiated
