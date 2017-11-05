@@ -1,12 +1,7 @@
 // Stats
 const units = require("./config/shipStats");
 const battleConfig = require("./config/battleConfig");
-
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
-}
+const helpers = require("./helpers");
 
 // This is the battle engine for a particular ship, will mutate both defender and attacker
 const fight = (ship, defender, attacker) => {
@@ -42,10 +37,9 @@ exports.battle = (attacker, defender) => {
 }
 
 exports.plunder = (attacker, defender) => {
-
   // potential spoils
   let potentional = defender.assets.asteroids;
-  let multiplyer = battleConfig.astrodroneEffectiveness + getRandomIntInclusive(-5, 8)/100;
+  let multiplyer = battleConfig.astrodroneEffectiveness + helpers.getRandom(-5, 8);
   let astrodrones = attacker.units.astrodrone*multiplyer;
   let total = potentional.platinum + potentional.crystal + potentional.uninitiated;
 
@@ -81,7 +75,5 @@ exports.plunder = (attacker, defender) => {
     attacker.units.astrodrone -= stolen;
     defender.assets.asteroids[type] -= stolen;
   }
-
-
 
 }
