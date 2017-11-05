@@ -7,7 +7,11 @@
       "astrodrone": 0.2,
       "turret": 0.1
     },
-    "armor": 3
+    "armor": 3,
+    "cost": {
+      "platinum": 300,
+      "crystal": 300
+    }
   },
   "frigate": {
     "type": "Ship",
@@ -17,11 +21,19 @@
       "astrodrone": 0.4,
       "turret": 0.3
     },
-    "armor": 7
+    "armor": 7,
+    "cost": {
+      "platinum": 1200,
+      "crystal": 500
+    }
   },
   "astrodrone": {
     "type": "Ship",
-    "armor": 6
+    "armor": 6,
+    "cost": {
+      "platinum": 800,
+      "crystal": 800
+    }
   },
   "turret": {
     "type": "Defense",
@@ -30,6 +42,10 @@
       "wraith": 0.5,
       "frigate": 0.2
     },
-    "armor": 3
+    "armor": 3,
+    "cost": {
+      "platinum": 500,
+      "crystal": 500
+    }
   }
 }
