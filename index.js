@@ -17,3 +17,10 @@ var io = socket(server);
 io.on('connection', function(socket) {
   console.log('made socket connection', socket.id);
 })
+
+var tick = 0;
+setInterval(function () {
+  tick++;
+  io.emit('tick', tick)
+  console.log(tick);
+}, 3000);
