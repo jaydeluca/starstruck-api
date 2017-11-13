@@ -23,11 +23,22 @@ io.on('connection', function(socket) {
 // Users
 const users = [
   {
-    name: 'Player1',
+    name: 'Player 1',
     units: {
       wraith: 100,
       frigate: 50,
       astrodrone: 30
+    },
+    assets: {
+      asteroids: {
+        platinum: 76,
+        crystal: 40,
+        uninitiated: 3
+      },
+      resources: {
+        platinum: 394829,
+        crystal: 390239
+      }
     },
     plunder: {
       asteroids: {
@@ -53,6 +64,13 @@ const users = [
       resources: {
         platinum: 394829,
         crystal: 390239
+      }
+    },
+    plunder: {
+      asteroids: {
+        platinum: 0,
+        crystal: 0,
+        uninitiated: 0
       }
     }
   }
