@@ -14,3 +14,13 @@ nodemon index.js
 - Battle
   - Finish ship types
   - Implement better battle order, add chaos
+  - Some kind of log for battle results
+    - Reports for each player
+    - Tie in to news system
+- Economy
+  - Technology research increases efficiency
+  - Some kind of additional investment pathway
+- News / Battle Logs
+- Data Backend
+Technology
+  - Some kind of interface for researching/construction upgrades for unlocking ships and improving mining

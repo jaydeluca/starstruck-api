@@ -1,6 +1,7 @@
 var express = require('express');
 var socket = require('socket.io');
 var economy = require('./economyFunctions');
+var economyConfig = require('./config/economyConfig');
 
 // App setup
 var app = express();
@@ -83,11 +84,12 @@ const users = [
   }
 ];
 
-
-
 var tick = {
   id: 0,
-  users
+  users,
+  config: {
+    economy: economyConfig
+  }
 };
 setInterval(function () {
 
