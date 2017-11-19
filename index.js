@@ -1,5 +1,6 @@
 var express = require('express');
 var socket = require('socket.io');
+var economy = require('./economyFunctions');
 
 // App setup
 var app = express();
@@ -36,9 +37,12 @@ const users = [
         uninitiated: 3
       },
       resources: {
-        platinum: 394829,
-        crystal: 390239
+        platinum: 0,
+        crystal: 0
       }
+    },
+    technology: {
+      "mining": "one"
     },
     plunder: {
       asteroids: {
@@ -62,9 +66,12 @@ const users = [
         uninitiated: 3
       },
       resources: {
-        platinum: 394829,
-        crystal: 390239
+        platinum: 0,
+        crystal: 0
       }
+    },
+    technology: {
+      "mining": "one"
     },
     plunder: {
       asteroids: {
@@ -83,6 +90,11 @@ var tick = {
   users
 };
 setInterval(function () {
+
+  for (user of tick.users) {
+    economy.mining(user);
+  }
+
   tick.id++;
   io.emit('tick', tick)
 }, 3000);

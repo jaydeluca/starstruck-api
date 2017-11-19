@@ -4,6 +4,12 @@
 [Helpers](docs/helpers.md)
 
 
+# Getting Started
+```
+npm install
+nodemon index.js
+```
+
 ## TODO
 - Battle
   - Finish ship types

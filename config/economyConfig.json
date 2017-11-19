@@ -1,0 +1,8 @@
+{
+  "baseIncome": {
+    "one": 1500,
+    "two": 3000,
+    "three": 5000
+  },
+  "asteroidIncome": 150
+}
