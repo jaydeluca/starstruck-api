@@ -2,6 +2,7 @@ var express = require('express');
 var socket = require('socket.io');
 var economy = require('./economyFunctions');
 var economyConfig = require('./config/economyConfig');
+var mongoose = require('mongoose');
 
 // App setup
 var app = express();
@@ -20,6 +21,8 @@ io.on('connection', function(socket) {
   console.log('made socket connection', socket.id);
 })
 
+// Data Storage
+mongoose.connect('mongodb://localhost:27017/starstruck');
 
 
 // Users
@@ -62,8 +65,8 @@ const users = [
     },
     assets: {
       asteroids: {
-        platinum: 76,
-        crystal: 40,
+        platinum: 56,
+        crystal: 70,
         uninitiated: 3
       },
       resources: {
@@ -99,4 +102,4 @@ setInterval(function () {
 
   tick.id++;
   io.emit('tick', tick)
-}, 3000);
+}, 5000);

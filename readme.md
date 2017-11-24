@@ -4,6 +4,11 @@
 [Helpers](docs/helpers.md)
 
 
+# Backend
+MongoDB
+- Make sure it's running: `mongod`
+
+
 # Getting Started
 ```
 npm install
