@@ -5,6 +5,7 @@ var economyConfig = require('./config/economyConfig');
 var mongoose = require('mongoose');
 var testData = require('./config/testData');
 var User = require('./models/user');
+var Tick = require('./models/tick');
 
 // App setup
 var app = express();
@@ -28,8 +29,8 @@ mongoose.connect('mongodb://localhost:27017/starstruck');
 
 const users = testData();
 
-var tick = {
-  id: 0,
+var game = {
+  tick: new Tick({position: 0}),
   users,
   config: {
     economy: economyConfig
@@ -37,11 +38,12 @@ var tick = {
 };
 
 setInterval(function () {
-  for (user of tick.users) {
+  for (user of game.users) {
     economy.mining(user);
     user.save();
   }
 
-  tick.id++;
-  io.emit('tick', tick)
+  game.tick.position++;
+  game.tick.save();
+  io.emit('tick', game)
 }, 5000);
