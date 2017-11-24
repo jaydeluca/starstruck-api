@@ -2,9 +2,9 @@ var User = require('../models/user');
 
 module.exports = () => {
   // Users
-  var user1 = new User({
+  var user1Data = {
     name: 'Player 1',
-    username: 'Player'+Math.random(),
+    username: 'Player1',
     units: {
       wraith: 100,
       frigate: 50,
@@ -31,11 +31,11 @@ module.exports = () => {
         uninitiated: 0
       }
     }
-  });
+  };
 
-  var user2 = new User({
+  var user2Data = {
     name: 'Player 2',
-    username: 'Player'+Math.random(),
+    username: 'Player2',
     units: {
       turret: 50,
       wraith: 30,
@@ -62,15 +62,17 @@ module.exports = () => {
         uninitiated: 0
       }
     }
-  });
+  };
 
-  user1.save(function(err) {
+  User.findOneAndRemove({ username: 'Player1'}, function (err) {
+    if (err) throw err;
+  });
+  User.findOneAndRemove({ username: 'Player2'}, function (err) {
     if (err) throw err;
   });
 
-  user2.save(function(err) {
-    if (err) throw err;
-  });
+  var user1 = new User(user1Data);
+  var user2 = new User(user2Data);
 
   return [user1, user2];
 

@@ -4,6 +4,7 @@ var economy = require('./economyFunctions');
 var economyConfig = require('./config/economyConfig');
 var mongoose = require('mongoose');
 var testData = require('./config/testData');
+var User = require('./models/user');
 
 // App setup
 var app = express();
@@ -34,8 +35,8 @@ var tick = {
     economy: economyConfig
   }
 };
-setInterval(function () {
 
+setInterval(function () {
   for (user of tick.users) {
     economy.mining(user);
     user.save();
