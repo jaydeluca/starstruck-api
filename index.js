@@ -42,7 +42,6 @@ setInterval(function () {
     economy.mining(user);
     user.save();
   }
-
   game.tick.position++;
   game.tick.save();
   io.emit('tick', game)

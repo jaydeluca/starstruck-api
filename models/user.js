@@ -30,6 +30,10 @@ var userSchema = new Schema({
       uninitiated: Number
     }
   },
+  fleets: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Fleet'
+  }],
   created_at: Date,
   updated_at: Date
 });

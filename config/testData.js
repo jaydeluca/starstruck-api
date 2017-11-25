@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Fleet = require('../models/fleet');
 
 module.exports = () => {
   // Users
@@ -73,6 +74,20 @@ module.exports = () => {
 
   var user1 = new User(user1Data);
   var user2 = new User(user2Data);
+
+  var fleet1 = new Fleet({
+    user_id: user1._id,
+    name: "Test Fleet",
+    position: {
+      direction: "home",
+    },
+  });
+
+  user1.fleets = [fleet1];
+
+  user1.save();
+
+  // user1.fleets = [fleet1];
 
   return [user1, user2];
 

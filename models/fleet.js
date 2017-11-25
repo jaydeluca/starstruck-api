@@ -2,7 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var fleetSchema = new Schema({
-  user_id: Number,
+  user_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   name: String,
   status: { type: Number, default: 0 },
   position: {
@@ -20,9 +23,7 @@ var fleetSchema = new Schema({
       crystal: { type: Number, default: 0 },
       uninitiated: { type: Number, default: 0 }
     }
-  },
-  created_at: Date,
-  updated_at: Date
+  }
 });
 
 module.exports = mongoose.model('Fleet', fleetSchema);
