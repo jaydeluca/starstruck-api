@@ -66,3 +66,33 @@
     }
   }
 ```
+
+## Fleet Model
+
+```javascript
+var fleetSchema = new Schema({
+  user_id: Number,
+  name: String,
+  /* Status Options: 0: 'home', 1: 'attacking', 2: 'defending' */
+  status: { type: Number, default: 0 },
+  /* Position Options: 'outbound', 'inbound', 'battle' */
+  position: {
+    direction: String,
+    eta: { type: Number, default: 0 }
+  },
+  units: {
+    wraith: { type: Number, default: 0 },
+    frigate: { type: Number, default: 0 },
+    astrodrone: { type: Number, default: 0 }
+  },
+  plunder: {
+    asteroids: {
+      platinum: { type: Number, default: 0 },
+      crystal: { type: Number, default: 0 },
+      uninitiated: { type: Number, default: 0 }
+    }
+  },
+  created_at: Date,
+  updated_at: Date
+});
+```
