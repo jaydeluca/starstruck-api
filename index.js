@@ -30,7 +30,7 @@ mongoose.connect('mongodb://localhost:27017/starstruck');
 const users = testData();
 
 var game = {
-  tick: new Tick({position: 0}),
+  tick: new Tick({position: 0, rankings: []}),
   users,
   config: {
     economy: economyConfig
@@ -38,10 +38,19 @@ var game = {
 };
 
 setInterval(function () {
+  rankings = [];
+  let score = 100;
   for (user of game.users) {
     economy.mining(user);
     user.save();
+    rankings.push({
+      user: user.username,
+      score: score++
+    })
   }
+  game.tick.rankings = rankings.sort(function (a, b) {
+    return parseFloat(b.score) - parseFloat(a.score);
+  });
   game.tick.position++;
   game.tick.save();
   io.emit('tick', game)
