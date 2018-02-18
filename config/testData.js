@@ -1,7 +1,14 @@
 var User = require('../models/user');
 var Fleet = require('../models/fleet');
+var Tick = require('../models/tick');
 
 module.exports = () => {
+
+  // clear db
+  Fleet.collection.remove();
+  User.collection.remove();
+  Tick.collection.remove();
+
   // Users
   var user1Data = {
     name: 'Player 1',
@@ -66,13 +73,6 @@ module.exports = () => {
       }
     }
   };
-
-  User.findOneAndRemove({ username: 'Player1'}, function (err) {
-    if (err) throw err;
-  });
-  User.findOneAndRemove({ username: 'Player2'}, function (err) {
-    if (err) throw err;
-  });
 
   var user1 = new User(user1Data);
   var user2 = new User(user2Data);
