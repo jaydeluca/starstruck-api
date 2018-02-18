@@ -3,5 +3,14 @@
     "platinum": 5,
     "crystal": 5,
     "uninitiated": 3
+  },
+  "resources": {
+    "platinum": 0.01,
+    "crystal": 0.01
+  },
+  "ships": {
+    "wraith": 15,
+    "frigate": 25,
+    "astrodrone": 5
   }
 }

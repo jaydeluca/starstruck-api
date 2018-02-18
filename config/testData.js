@@ -6,6 +6,7 @@ module.exports = () => {
   var user1Data = {
     name: 'Player 1',
     username: 'Player1',
+    score: 10,
     units: {
       wraith: 100,
       frigate: 50,
@@ -37,6 +38,7 @@ module.exports = () => {
   var user2Data = {
     name: 'Player 2',
     username: 'Player2',
+    score: 15,
     units: {
       turret: 50,
       wraith: 30,

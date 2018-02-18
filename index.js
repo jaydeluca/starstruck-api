@@ -1,6 +1,7 @@
 var express = require('express');
 var socket = require('socket.io');
 var economy = require('./economyFunctions');
+var score = require('./scoreFunctions');
 var economyConfig = require('./config/economyConfig');
 var mongoose = require('mongoose');
 var testData = require('./config/testData');
@@ -39,13 +40,13 @@ var game = {
 
 setInterval(function () {
   rankings = [];
-  let score = 100;
   for (user of game.users) {
     economy.mining(user);
+    score.calculateScore(user);
     user.save();
     rankings.push({
       user: user.username,
-      score: score++
+      score: user.score
     })
   }
   game.tick.rankings = rankings.sort(function (a, b) {

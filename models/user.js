@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
   name: String,
+  score: Number,
   username: { type: String, required: true, unique: true },
   units: {
     wraith: Number,
